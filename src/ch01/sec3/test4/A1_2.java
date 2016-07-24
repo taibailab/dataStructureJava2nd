@@ -1,4 +1,4 @@
-package ch01.sec3;
+package ch01.sec3.test4;
 
 /**
  * 1.3.4.算法设计举例

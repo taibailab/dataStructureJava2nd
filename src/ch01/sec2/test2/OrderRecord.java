@@ -1,4 +1,4 @@
-package ch01;
+package ch01.sec2.test2;
 
 import java.util.GregorianCalendar;
 

@@ -1,4 +1,4 @@
-package ch01.sec3;
+package ch01.sec3.test3;
 
 import java.util.Iterator;
 

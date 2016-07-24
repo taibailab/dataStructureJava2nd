@@ -1,4 +1,4 @@
-package ch01;
+package ch01.sec2.test3;
 
 /**
  * 复数抽象数据类型的接口表示

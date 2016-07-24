@@ -1,4 +1,4 @@
-package ch01;
+package ch01.sec2.test3;
 
 public class Complex implements IComplex {
 	private double real;	// 实部

@@ -17,31 +17,19 @@ public interface IStack {
 	//求栈中的数据元素个数并由函数返回其值
 	public int length();
 	
-	/**
-	 * 查看栈顶对象而不移除它，返回栈顶对象
-	 * <br>取栈顶元素操作peek(): 读取栈顶元素并返回其值，若栈为空，则返回null。
-	 * @return
-	 */
+	// 查看栈顶对象而不移除它，返回栈顶对象
+	// 取栈顶元素操作peek(): 读取栈顶元素并返回其值，若栈为空，则返回null。
 	public Object peek();
 	
-	/**
-	 * 把项压入栈顶
-	 * <br>入栈操作push(x): 将数据元素压入栈顶。
-	 * @param x
-	 * @throws Exception
-	 */
+	// 把项压入栈顶
+	// 入栈操作push(x): 将数据元素压入栈顶。
 	public void push(Object x) throws Exception;
 	
-	/**
-	 * 移除栈顶对象并作为此函数的值返回该对象
-	 * <br>出栈操作pop(); 删除并返回栈顶元素
-	 * @return
-	 */
+	// 移除栈顶对象并作为此函数的值返回该对象
+	// 出栈操作pop(); 删除并返回栈顶元素
 	public Object pop();
 	
-	/**
-	 * 打印函数，打印所有栈中的元素(栈底到栈顶)
-	 */
+	// 打印函数，打印所有栈中的元素(栈底到栈顶)
 	public void display();
 
 }

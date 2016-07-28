@@ -41,13 +41,11 @@ public class Example3_3 {
 							ac = (Character) st.pop();
 						}
 						
-						if (!st.isEmpty()) {	// 栈非空，取出栈中优先级高的操作符串联到后缀表达式的结尾
-							if (ac != null) {	// 如果最后一次取出的优先级低的操作符，重新压栈
-								st.push(ac);
-							}
+						if (ac != null) {	// 如果最后一次取出的优先级低的操作符，重新压栈
+							st.push(ac);
 						}
-						st.push(c);
 					}
+					st.push(c);
 				} else {	// 为操作数，串联到后缀表达式的结尾
 					postfix = postfix.concat(String.valueOf(c));
 				}
@@ -138,7 +136,5 @@ public class Example3_3 {
 
 }
 
-/*
-//调试结果：
-//表达式的结果为： 4.25
-*/
+// 调试结果：
+// 表达式的结果为：4.25

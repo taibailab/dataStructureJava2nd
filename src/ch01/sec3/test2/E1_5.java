@@ -1,4 +1,4 @@
-package ch01;
+package ch01.sec3.test2;
 
 /**
  * 例1.5.给出求整形数组a中最大值的算法

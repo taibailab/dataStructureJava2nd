@@ -8,6 +8,9 @@ import ch03.sec1.test2.IStack;
  * ->1.顺序栈类的描述
  * ->在顺序表上实现的栈及其基本操作
  * ->所有有关顺序栈操作算法的时间复杂度都为O(1)。
+ * ->2.顺序栈基本操作的实现
+ * ->[算法3.1].顺序栈的入栈操作算法。
+ * ->[算法3.2].顺序栈的出栈操作算法。
  */
 public class SqStack implements IStack {
 	private Object[] stackElem;	// 栈存储空间
@@ -46,6 +49,8 @@ public class SqStack implements IStack {
 			return null;
 	}
 
+	// 2.顺序栈基本操作的实现
+	// [算法3.1].顺序栈的入栈操作算法。
 	// 把项压入栈顶
 	@Override
 	public void push(Object o) throws Exception {
@@ -55,6 +60,8 @@ public class SqStack implements IStack {
 			stackElem[top++] = o;	// o复制给栈顶元素后，top增1
 	}
 
+	// 2.顺序栈基本操作的实现
+	// [算法3.2].顺序栈的出栈操作算法。
 	// 移除栈顶对象并作为此函数的值返回该对象
 	@Override
 	public Object pop() {

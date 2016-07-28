@@ -1,4 +1,4 @@
-package ch01;
+package ch01.sec2.test2;
 
 /**
  * 基于数组的顺序存储类

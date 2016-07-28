@@ -1,4 +1,4 @@
-package ch01;
+package ch01.sec3.test3;
 
 /**
  * 例1.9.求如下算法的时间复杂度。

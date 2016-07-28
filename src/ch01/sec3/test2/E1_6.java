@@ -1,4 +1,4 @@
-package ch01;
+package ch01.sec3.test2;
 
 /**
  * 例1.6.给出将整形数组a中数组元素实现就地逆置的算法

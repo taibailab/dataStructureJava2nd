@@ -6,7 +6,6 @@ import ch05.sec2.test3.BiTree;
  * 5.3.3.建立二叉树
  * ->2.由标明空子树的先根遍历序列建立一棵二叉树
  * ->[例5.6].编写一个程序：首先由标明空子树的先根遍历建立一棵二叉树，然后输出该二叉树的先根，中根和后根遍历序列。
- * 
  */
 public class Example5_6 {
 	public static void main(String[] args) {

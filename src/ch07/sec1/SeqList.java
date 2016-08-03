@@ -1,29 +1,61 @@
 package ch07.sec1;
 
 /**
- * 7.1.排序的基本概念
- * ->待排序的顺序表类描述
- * ->顺序表类
- * 
- * 7.2.插入排序
- * 7.2.1.直接插入排序
- * ->[算法7.1].不带监视哨的直接插入排序算法。
- * ->[算法7.2].带监视哨的直接插入排序算法
- * 7.2.2.希尔排序
- * ->[算法7.3].希尔排序算法。
- * 
- * 7.3.交换排序
- * 7.3.1.冒泡排序
- * ->[算法7.4].冒泡排序算法
- * 7.3.2.快速排序
- * ->[算法7.5].一趟快速排序算法
- * ->[算法7.6].递归形式的快速排序算法
- * ->[算法7.7].顺序表快速排序算法
- * 
- * 7.4.选择排序
- * 7.4.1.直接选择排序
- * ->[算法7.8].直接选择排序
- * 
+ * 7.1.排序的基本概念<br>
+ * ->5.待排序记录的类描述<br>
+ * ->待排序的顺序表类描述<br>
+ * ->顺序表类<br>
+ * <p>
+ * 7.2.插入排序<p>
+ * 7.2.1.直接插入排序<br>
+ * ->(1).将r[i]暂存在临时变量temp中。<br>
+ * ->(2).将temp与r[j](j = i-1, i-2, ..., 0)依次比较，若temp.key<k[j].key，则将r[j]后移一个位置，直到temp.key>=r[j].key为止(此时j+1即为r[i]的插入位置)。<br>
+ * ->(3).将temp插入到第j+1个位置上。<br>
+ * ->(4).令i = 1, 2, 3, ..., n-1，重复上述步骤(1)~(3)。<br>
+ * ->[算法7.1].不带监视哨的直接插入排序算法。<br>
+ * ->[算法7.2].带监视哨的直接插入排序算法<br>
+ * 7.2.2.希尔排序<br>
+ * ->(1).选择一个增量序列{d0, d1, ..., dk-1}。<br>
+ * ->(2).根据当前增量di将n条记录分成di个字表，每个字表中记录的下标相间隔为di。<br>
+ * ->(3).对各个子表中的记录进行直接插入排序。<br>
+ * ->(4).令i = 0, 1, ..., k-1，重复上述步骤(2)~(4)。<br>
+ * ->[算法7.3].希尔排序算法。<br>
+ * <p>
+ * 7.3.交换排序<p>
+ * 7.3.1.冒泡排序<br>
+ * ->(1).置初值i=1。<br>
+ * ->(2).在无序序列{r[0], r[1], ..., r[n-i]}中，从头到尾一次比较相邻的两个记录r[j]与r[j+1](0<=j<=n-i-1)，若r[j].key>r[j+1].key，则交换位置。<br>
+ * ->(3).i=i+1。<br>
+ * ->(4).重复步骤(2)~(3)，直到在步骤(2)中未发生记录交换或者i=n-1为止。<br>
+ * ->[算法7.4].冒泡排序算法<br>
+ * 7.3.2.快速排序<br>
+ * ->(1).设置两个变量i、j，初值分别为low和high，分别表示待排序序列的初始下标和终止下标。<br>
+ * ->(2).将第i个记录暂存在变量pivot中，即pivot=r[i]。<br>
+ * ->(3).从下标为j的位置开始由后向前一次搜索，当找到第1个比pivot的关键字值小的记录时，则将该记录向前移动到下标为i的位置上；然后i=i+1。<br>
+ * ->(4).从下标为i的位置开始由前向后一次搜索，当找到第1个比pivot的关键字值大的记录时，则将该记录向后移动到下标为j的位置上；然后j=j-1。<br>
+ * ->(5).重复第(3)、(4)步，直到i==j为止。<br>
+ * ->(6).r[i]=pivot。<br>
+ * ->[算法7.5].一趟快速排序算法<br>
+ * ->[算法7.6].递归形式的快速排序算法<br>
+ * ->[算法7.7].顺序表快速排序算法<br>
+ * <p>
+ * 7.4.选择排序<p>
+ * 7.4.1.直接选择排序<br>
+ * ->(1).置i的初值为0。<br>
+ * ->(2).当i<n-1时，重复...。<br>
+ * ->[算法7.8].直接选择排序<br>
+ * 7.4.2.树形选择排序<br>
+ * ->(1).变量初始化，令待排序的结点个数为n，则leafSize=n, TreeSize=2n-1, loadindex=n-1。<br>
+ * ->(2).将n个待排序结点复制到胜利者树的n个叶子结点中，即将r[0..n-1]依次赋值到tree[loadindex..TreeSize-1]中。<br>
+ * ->(3).构造胜利树：将n个叶子结点的关键词进行两两比较，得到n/2个关键字值较小的结点，保留下来，再将n/2个结点的关键字进行两两比较，得到n/4个较小关键字值的结点，保
+ * 留下来，依次类推，最后得到根结点为最小关键字值的结点为止。<br>
+ * ->(4).调整胜者树：先将根节点保存到原数组r中，再把具有根结点值所对应的叶子结点的值改为“最大值”，然后从该叶子结点开始，和其左(或右)兄弟的值进行比较，修改从该叶
+ * 子结点到根的路径上各节点的值，直到根结点。<br>
+ * ->(5).重复步骤(4)，直到得到n个结点为止。<br>
+ * ->[算法7.9].树形选择排序算法。<br>
+ * ->[算法7.10].树形选择排序中的调整算法。<br>
+ * 7.4.3.堆排序<br>
+ * ->1.堆的定义<br>
  * 
  * 
  * 
@@ -31,16 +63,16 @@ package ch07.sec1;
 public class SeqList {
 	public RecordNode[] r;	// 顺序表记录结点数组
 	public int curlen;	// 顺序表长度，即记录个数
-	
+
 	public SeqList() {
 	}
-	
+
 	// 顺序表的构造方法，构造一个存储空间容量为maxSize的顺序表
 	public SeqList(int maxSize) {
 		this.r = new RecordNode[maxSize];	// 为顺序表分配maxSize个存储单元
 		this.curlen = 0;	// 置顺序表的当前长度为0
 	}
-	
+
 	/*
 	public RecordNode[] getRecordNode() {
 		return r;
@@ -49,12 +81,12 @@ public class SeqList {
 		this.r = r;
 	}
 	*/
-	
+
 	// 求顺序表中的数据元素个数并由函数返回其值
 	public int length() {
 		return curlen;	// 返回顺序表的当前长度
 	}
-	
+
 	// 在当前顺序表的第i个结点之前插入一个RecordNode类型的结点x，其中i取值范围为：0≤i≤length()。
 	// 如果i值不在此范围则抛出异常，当i=0时表示在表头插入一个数据元素x，当i=length()时表示在表尾插入一个数据元素x
 	public void insert(int i, RecordNode x) throws Exception {
@@ -70,14 +102,14 @@ public class SeqList {
 		r[i] = x;	// 插入x
 		this.curlen++;	// 表长度增1
 	}
-	
+
 	public void display() {	// 输出数组元素
 		for (int i = 0; i < this.curlen; i++) {
 			System.out.print(" " + r[i].key.toString());
 		}
 		System.out.println();
 	}
-	
+
 	public void display(int sortMode) {	// 输出数组元素
 		int i;
 		if (sortMode == 9) 	// 带监视哨的直接插入排序方法，0号单元用于存放监视哨
@@ -89,9 +121,13 @@ public class SeqList {
 		}
 		System.out.println();
 	}
-	
+
 	// 7.2.插入排序
 	// 7.2.1.直接插入排序
+	// ->(1).将r[i]暂存在临时变量temp中。
+	// ->(2).将temp与r[j](j = i-1, i-2, ..., 0)依次比较，若temp.key<k[j].key，则将r[j]后移一个位置，直到temp.key>=r[j].key为止(此时j+1即为r[i]的插入位置)。
+	// ->(3).将temp插入到第j+1个位置上。
+	// ->(4).令i = 1, 2, 3, ..., n-1，重复上述步骤(1)~(3)。
 	// [算法7.1].不带监视哨的直接插入排序算法
 	public void insertSort() {
 		RecordNode temp;
@@ -107,7 +143,7 @@ public class SeqList {
 //			display();	// 注释掉
 		}
 	}
-	
+
 	// 7.2.1.直接插入排序
 	// [算法7.2].带监视哨的直接插入排序算法
 	public void insertSortWithGuard() {
@@ -123,8 +159,12 @@ public class SeqList {
 			display();	// 注释掉
 		}
 	}
-	
+
 	// 7.2.2.希尔排序
+	// ->(1).选择一个增量序列{d0, d1, ..., dk-1}。
+	// ->(2).根据当前增量di将n条记录分成di个字表，每个字表中记录的下标相间隔为di。
+	// ->(3).对各个子表中的记录进行直接插入排序。
+	// ->(4).令i = 0, 1, ..., k-1，重复上述步骤(2)~(4)。
 	// [算法7.3].希尔排序算法
 	public void shellSort(int[] d) {	// d[]为增量数组
 		RecordNode temp;
@@ -148,6 +188,10 @@ public class SeqList {
 
 	// 7.3.交换排序
 	// 7.3.1.冒泡排序
+	// ->(1).置初值i=1。
+	// ->(2).在无序序列{r[0], r[1], ..., r[n-i]}中，从头到尾一次比较相邻的两个记录r[j]与r[j+1](0<=j<=n-i-1)，若r[j].key>r[j+1].key，则交换位置。
+	// ->(3).i=i+1。
+	// ->(4).重复步骤(2)~(3)，直到在步骤(2)中未发生记录交换或者i=n-1为止。
 	// [算法7.4].冒泡排序算法
 	public void bubbleSort() {
 //		System.out.println("冒泡排序");
@@ -169,6 +213,12 @@ public class SeqList {
 	}
 
 	// 7.3.2.快速排序
+	// ->(1).设置两个变量i、j，初值分别为low和high，分别表示待排序序列的初始下标和终止下标。
+	// ->(2).将第i个记录暂存在变量pivot中，即pivot=r[i]。
+	// ->(3).从下标为j的位置开始由后向前一次搜索，当找到第1个比pivot的关键字值小的记录时，则将该记录向前移动到下标为i的位置上；然后i=i+1。
+	// ->(4).从下标为i的位置开始由前向后一次搜索，当找到第1个比pivot的关键字值大的记录时，则将该记录向后移动到下标为j的位置上；然后j=j-1。
+	// ->(5).重复第(3)、(4)步，直到i==j为止。
+	// ->(6).r[i]=pivot。
 	// ->[算法7.5].一趟快速排序算法
 	// 交换排序表r[i..j]的记录，使支点记录到位，并返回其所在位置
 	// 此时，在支点之前(后)的记录关键字均不大于(小于)它
@@ -213,134 +263,134 @@ public class SeqList {
 		qSort(0, this.curlen - 1);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	// 7.4.选择排序
 	// 7.4.1.直接选择排序
+	// ->(1).置i的初值为0。
+	// ->(2).当i<n-1时，重复...。
 	// [算法7.8].直接选择排序
 	public void selectSort() {
-		
-		
-		
-		/*
-		 //   System.out.println("直接选择排序");
-        RecordNode temp; //辅助结点
-        for (int i = 0; i < this.curlen - 1; i++) {//n-1趟排序
-            //每趟在从r[i]开始的子序列中寻找最小元素
-            int min = i;               //设第i条记录的关键字最小
-            for (int j = i + 1; j < this.curlen; j++) {//在子序列中选择关键字最小的记录
-                if (r[j].key.compareTo(r[min].key) < 0) {
-                    min = j;             //记住关键字最小记录的下标
-                }
-            }
-            if (min != i) {    //将本趟关键字最小的记录与第i条记录交换
-                temp = r[i];
-                r[i] = r[min];
-                r[min] = temp;
-            }
-        //    System.out.print("第" + (i + 1) + "趟: ");
-        //    display();
-        }
-		 */
+//		System.out.println("直接选择排序");
+		RecordNode temp;	// 辅助结点
+		for (int i = 0; i < this.curlen - 1; i++) {	// n-1趟排序
+			// 每趟在从r[i]开始的子序列中寻找最小元素
+			int min = i;	// 设第i条记录的关键字最小
+			for (int j = i + 1; j < this.curlen; j++) {	// 在子序列中选择关键字最小的记录
+				if (r[j].key.compareTo(r[min].key) < 0) {
+					min = j;	// 记住关键字最小记录的下标
+				}
+			}
+			if (min != i) {	// 将本趟关键字最小的记录与第i条记录交换
+				temp = r[i];
+				r[i] = r[min];
+				r[min] = temp;
+			}
+//			System.out.print("第" + (i + 1) + "趟：");
+//			display();
+		}
 	}
 
-	
-	
-	
-	
-	
-	
+	// 7.4.2.树形选择排序
+	// ->(1).变量初始化，令待排序的结点个数为n，则leafSize=n, TreeSize=2n-1, loadindex=n-1。
+	// ->(2).将n个待排序结点复制到胜利者树的n个叶子结点中，即将r[0..n-1]依次赋值到tree[loadindex..TreeSize-1]中。
+	// ->(3).构造胜利树：将n个叶子结点的关键词进行两两比较，得到n/2个关键字值较小的结点，保留下来，再将n/2个结点的关键字进行两两比较，得到n/4个较小关键字值的结点
+	// ，保留下来，依次类推，最后得到根结点为最小关键字值的结点为止。
+	// ->(4).调整胜者树：先将根节点保存到原数组r中，再把具有根结点值所对应的叶子结点的值改为“最大值”，然后从该叶子结点开始，和其左(或右)兄弟的值进行比较，修改从
+	// 该叶子结点到根的路径上各节点的值，直到根结点。<br>
+	// ->(5).重复步骤(4)，直到得到n个结点为止。
+	// ->[算法7.9].树形选择排序算法。
+	// [算法7.9].属性选择排序(锦标赛排序)。
+	// 建立树的顺序存储数组tree，并对其排序，并将结果返回到r中
+	public void tournamentSort() {
+		TreeNode[] tree;	// 胜者树结点数组
+		int leafSize = 1;	// 胜者树的叶子结点数
+		// 得到胜者树叶子结点(外结点)的个数，该个数必须是2的幂
+		while (leafSize < this.curlen) {
+			leafSize *= 2;
+		}
+		int TreeSize = 2 * leafSize - 1;	// 胜者树的所有结点数
+		int loadindex = leafSize - 1;	// 叶子结点(外结点)存放的起始位置
+		tree = new TreeNode[TreeSize];
+		int j = 0;
+		// 把待排序结点复制到胜者树的叶子结点中
+		for (int i = loadindex; i < TreeSize; i++) {
+			tree[i] = new TreeNode();
+			tree[i].index = i;
+			if (j < this.curlen) {	// 复制结点
+				tree[i].active = 1;
+				tree[i].data = r[j++];
+			} else {
+				tree[i].active = 0;	// 空的外结点
+			}
+		}
+		int i = loadindex;	// 进行初始比较查找关键码最小结点
+		while (i > 0) {	// 产生胜者树
+			j = i;
+			while (j < 2 * i) {	// 处理各对比赛者
+				if (tree[j + 1].active == 0 || ((tree[j].data).key.compareTo((tree[j + 1].data).key)) <= 0) {
+					tree[(j - 1) / 2] = tree[j];	// 左孩子(胜者)值赋给父结点
+				} else {
+					tree[(j - 1) / 2] = tree[j + 1];	// 右孩子(胜者)赋值给父结点
+				}
+				j += 2;	// 下一对比赛者
+			}
+			i = (i - 1) / 2;	// 处理上层结点
+		}
+		for (i = 0; i < this.curlen - 1; i++) {	// 处理剩余的n-1个记录
+			r[i] = tree[0].data;	// 将胜者树的跟(最小者)存入数组r
+			tree[tree[0].index].active = 0;	// 该元素相应外结点不再比赛
+			updateTree(tree, tree[0].index);	//调整胜者树
+		}
+		r[this.curlen - 1] = tree[0].data;
+	}
+
+	// ->[算法7.10].树形选择排序中的调整算法。<br>
+	// [算法7.10].树形选择排序的调整算法，i是当前最小关键字记录的下标
+	void updateTree(TreeNode[] tree, int i) {
+		int j;
+		if (i % 2 == 0) {	// i为偶数，对手为左结点
+			tree[(i - 1) / 2] = tree[i - 1];
+		} else {	// i为奇数，对手为右结点
+			tree[(i - 1) / 2] = tree[i + 1];
+		}
+		i = (i - 1) / 2;	// 最小元素输出后，其对手上升到父结点
+		while (i > 0) {	// 直到i==0
+			if (i % 2 == 0) {	// i为偶数，对手为左结点
+				j = i - 1;
+			} else {	// i为奇数，对手为右结点
+				j = i + 1;
+			}
+			// 比赛对手中有一个为空
+			if (tree[i].active == 0 || tree[j].active == 0) {
+				if (tree[i].active == 1) {
+					tree[(i - 1) / 2] = tree[i];	// i可参选，i上升到父结点
+				} else {
+					tree[(i - 1) / 2] = tree[j];	// 否则，j上升到父结点
+				}
+			} else 	// 双方都可参选
+				// 关键码小者上升到父结点
+				if ((tree[i].data).key.compareTo((tree[j].data).key) <= 0) {
+					tree[(i - 1) / 2] = tree[i];
+				} else {
+					tree[(i - 1) / 2] = tree[j];
+				}
+			i = (i - 1) / 2;	// i上升到父结点
+		}
+	}
+
+	// 
+
+
+
+
+
+
+
+
+
+
 
 
 	/*
-    //【算法7.9】 树形选择排序(锦标赛排序)
-    //建立树的顺序存储数组tree,并对其排序，并将结果返回到r中
-    void tournamentSort() {
-        TreeNode[] tree;   //胜者树结点数组
-        int leafSize = 1;  //胜者树的叶子结点数
-        //得到胜者树叶子结点(外结点)的个数，该个数必须是2的幂
-        while (leafSize < this.curlen) {
-            leafSize *= 2;
-        }
-        int TreeSize = 2 * leafSize - 1;   //胜者树的所有节点数
-        int loadindex = leafSize - 1;      //叶子结点(外结点)存放的起始位置
-        tree = new TreeNode[TreeSize];
-        int j = 0;
-        //把待排序结点复制到胜者树的叶子结点中
-        for (int i = loadindex; i < TreeSize; i++) {
-            tree[i] = new TreeNode();
-            tree[i].index=i;
-            if (j < this.curlen) {      //复制结点
-                tree[i].active=1;
-                tree[i].data=r[j++];
-            } else {
-                tree[i].active=0 ;   //空的外结点
-            }
-        }
-        int i = loadindex;    //进行初始比较查找关键码最小结点
-        while (i > 0) {      //产生胜者树
-            j = i;
-            while (j < 2 * i) {   //处理各对比赛者
-                if (tree[j + 1].active == 0 || ((tree[j].data).key.compareTo((tree[j + 1].data).key)) <= 0) {
-                    tree[(j - 1) / 2] = tree[j];      //左孩子(胜者)赋值给父结点
-                } else {
-                    tree[(j - 1) / 2] = tree[j + 1];  //右孩子(胜者)赋值给父结点
-                }
-                j += 2;     //下一对比赛者
-            }
-            i = (i - 1) / 2;    //处理上层结点
-        }
-        for (i = 0; i < this.curlen - 1; i++) {  //处理剩余的n-1个记录
-            r[i] = tree[0].data;               //将胜者树的根(最小者)存入数组r
-            tree[tree[0].index].active=0;  //该元素相应外结点不再比赛
-            updateTree(tree, tree[0].index);   //调整胜者树
-        }
-        r[this.curlen - 1] = tree[0].data;
-    }
-
-    //【算法7.10】树形选择排序的调整算法，i是当前最小关键字记录的下标
-    void updateTree(TreeNode[] tree, int i) {
-        int j;
-        if (i % 2 == 0) { //i为偶数，对手为左结点
-            tree[(i - 1) / 2] = tree[i - 1];
-        } else { //i为奇数，对手为右结点
-            tree[(i - 1) / 2] = tree[i + 1];
-        }
-        i = (i - 1) / 2;   //最小元素输出后，其对手上升到父结点
-        while (i > 0) {          //直到i==0
-            if (i % 2 == 0) {   //i为偶数，对手为左结点
-                j = i - 1;
-            } else {            //i为奇数，对手为右结点
-                j = i + 1;
-            }
-            //比赛对手中有一个为空
-            if (tree[i].active == 0 || tree[j].active == 0) {
-                if (tree[i].active == 1) {
-                    tree[(i - 1) / 2] = tree[i];  //i可参选，i上升到父结点
-                } else {
-                    tree[(i - 1) / 2] = tree[j];  //否则，j上升到父结点
-                }
-            } else //双方都可参选
-            //关键码小者上升到父结点
-            if ((tree[i].data).key.compareTo((tree[j].data).key) <= 0) {
-                tree[(i - 1) / 2] = tree[i];
-            } else {
-                tree[(i - 1) / 2] = tree[j];
-            }
-            i = (i - 1) / 2;     //i上升到父结点
-        }
-    }
-
     //【算法7.11】将以筛选法调整堆算法
     //将以low为根的子树调整成小顶堆，low、high是序列下界和上界
     public void sift(int low, int high) {
@@ -485,39 +535,38 @@ public class SeqList {
         }
         return -1;  //查找不成功
     }
+	 */
 
 }
 
-class TreeNode {      //胜者树的结点类
+/**
+ * 7.4.2.树形选择排序<br>
+ * ->胜利树的结点类
+ */
+class TreeNode {	// 胜利树的结点类
+	public RecordNode data;	// 排序记录结点数据值
+	public int index;	// 结点在满二叉树中的序号
+	public int active;	// 参加选择标志，1表示参选，0表示不参选
 
-    public RecordNode data;  //排序记录结点数据值
-    public int index;        //结点在满二叉树中的序号
-    public int active;       //参加选择标志，1表示参选，0表示不参选
-/ *
-    public int getActive() {
-        return active;
-    }
-
-    public void setActive(int active) {
-        this.active = active;
-    }
-
-    public RecordNode getData() {
-        return data;
-    }
-
-    public void setData(RecordNode data) {
-        this.data = data;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-* /
-	 */
+	/*
+	public RecordNode getData() {
+		return data;
+	}
+	public void setData(RecordNode data) {
+		this.data = data;
+	}
+	public int getIndex() {
+		return index;
+	}
+	public void setIndex(int index) {
+		this.index = index;
+	}
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
+	*/
 
 }

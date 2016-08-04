@@ -70,17 +70,6 @@ package ch07.sec1;
  * ->[算法7.14].一趟归并排序算法。
  * ->3.二路归并排序
  * ->[算法7.15].二路归并排序算法。
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  */
 public class SeqList {
 	public RecordNode[] r;	// 顺序表记录结点数组
@@ -398,10 +387,6 @@ public class SeqList {
 			i = (i - 1) / 2;	// i上升到父结点
 		}
 	}
-
-	
-
-
 
 
 

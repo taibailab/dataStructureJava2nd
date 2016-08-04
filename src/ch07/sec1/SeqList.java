@@ -62,20 +62,26 @@ package ch07.sec1;
  * 
  * 
  * 
+ * <p>
+ * 7.5.归并排序<p>
+ * ->1.两个相邻有序序列的归并<br>
+ * ->[算法7.13].两个有序序列的归并算法。<br>
+ * ->2.一趟归并排序<br>
+ * ->[算法7.14].一趟归并排序算法。<br>
+ * ->3.二路归并排序<br>
+ * ->[算法7.15].二路归并排序算法。<br>
  * 
- * 7.5.归并排序
- * ->1.两个相邻有序序列的归并
- * ->[算法7.13].两个有序序列的归并算法。
- * ->2.一趟归并排序
- * ->[算法7.14].一趟归并排序算法。
- * ->3.二路归并排序
- * ->[算法7.15].二路归并排序算法。
- * 
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * 第9章.查找<p>
+ * 9.1.查找的基本概念<p>
+ * ->1.查找<br>
+ * ->2.查找表<br>
+ * ->3.平均查找长度ASL(Average Search Length)<br>
+ * 9.2.静态表查找<p>
+ * 9.2.1.顺序查找<br>
+ * ->[算法9.1].顺序查找算法<br>
+ * ->[算法9.2].带监视哨的顺序查找算法<br>
  * 
  * 
  * 
@@ -399,7 +405,7 @@ public class SeqList {
 		}
 	}
 
-	
+	// 
 
 
 
@@ -509,40 +515,51 @@ public class SeqList {
 		}
 	}
 
-	// 
-	
+	// 第9章.查找
+	// 9.2.静态表查找
+	// 9.2.1.顺序查找<br>
+	// ->[算法9.1].顺序查找算法
+	// 从顺序表r[0]到r[n-1]的n个元素中顺序查找出关键字为key的记录。若查找成功返回其下标，否则返回-1。
+	public int seqSearch(Comparable key) {
+		int i = 0, n = length();
+		while (i < n && r[i].key.compareTo(key) != 0) {
+			i++;
+		}
+		if (i < n) {	// 查找成功则返回该元素的下标i，否则返回-1
+			return i;
+		} else {
+			return -1;
+		}
+	}
+
+	// 9.2.1.顺序查找
+	// ->[算法9.2].带监视哨的顺序查找算法
+	// 从顺序表r[1]到r[n]的n个元素中顺序查找出关键字为key的元素。若查找成功返回其下标，否则返回-1。
+	public int seqSearchWithGuard(Comparable key) {
+		int i = length() - 1;
+		r[0].key = key;	// 哨兵
+		while ((r[i].key).compareTo(key) != 0) {
+			i--;
+		}
+		if (i > 0) {
+			return i;
+		} else {
+			return -1;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	/*
-    // 【算法8.1】顺序查找算法
-    // 从顺序表r[0]到r[n-1]的n个元素中顺序查找出关键字为key的记录
-    // 若查找成功返回其下标，否则返回-1
-    public int seqSearch(Comparable key) {
-        int i = 0, n = length();
-        while (i < n && r[i].key.compareTo(key) != 0) {
-            i++;
-        }
-        if (i < n) {   //查找成功则返回该元素的下标i，否则返回-1
-            return i;
-        } else {
-            return -1;
-        }
-    }
-
-    // 【算法8.2】带监视哨的顺序查找算法
-    // 从顺序表r[1]到r[n]的n个元素中顺序查找出关键字为key的元素
-    // 若查找成功返回其下标，否则返回-1
-    public int seqSearchWithGuard(Comparable key) {
-        int i = length()-1 ;
-        r[0].key=key;    //哨兵
-        while ((r[i].key).compareTo(key) != 0) {
-            i--;
-        }
-        if (i > 0) {
-            return i;
-        } else {
-            return -1;
-        }
-    }
-
     //【算法8.3】二分查找算法，
     //数组元素已按升序排列，若查找成功返回元素下标，否则返回-1
     public int binarySearch(Comparable key) {

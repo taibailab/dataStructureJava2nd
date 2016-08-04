@@ -59,6 +59,28 @@ package ch07.sec1;
  * 
  * 
  * 
+ * 
+ * 
+ * 
+ * 
+ * 7.5.归并排序
+ * ->1.两个相邻有序序列的归并
+ * ->[算法7.13].两个有序序列的归并算法。
+ * ->2.一趟归并排序
+ * ->[算法7.14].一趟归并排序算法。
+ * ->3.二路归并排序
+ * ->[算法7.15].二路归并排序算法。
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 public class SeqList {
 	public RecordNode[] r;	// 顺序表记录结点数组
@@ -377,7 +399,7 @@ public class SeqList {
 		}
 	}
 
-	// 
+	
 
 
 
@@ -428,63 +450,68 @@ public class SeqList {
             r[i] = temp;
             sift(0, i);
         }
-    }
+    }*/
 
-    //【算法7.13】两个有序序列的归并算法
-    //把r数组中两个相邻的有序表r[h]-r[m]和r[m+1]-r[t]归并为一个有序表order[h]-order[t]
-    public void merge(RecordNode[] r, RecordNode[] order, int h, int m, int t) {
-        int i = h, j = m + 1, k = h;
-        while (i <= m && j <= t) {//将r中两个相邻子序列归并到order中
-            if (r[i].key.compareTo(r[j].key) <= 0) {//较小值复制到order中
-                order[k++] = r[i++];
-            } else {
-                order[k++] = r[j++];
-            }
-        }
-        while (i <= m) {//将前一个子序列剩余元素复制到order中
-            order[k++] = r[i++];
-        }
-        while (j <= t) {//将后一个子序列剩余元素复制到order中
-            order[k++] = r[j++];
-        }
-    }
+	// 7.5.归并排序
+	// ->1.两个相邻有序序列的归并
+	// ->[算法7.13].两个有序序列的归并算法。
+	// 把r数组中两个相邻的有序表r[h]-r[m]和r[m+1]-r[t]归并为一个有序表order[h]-order[t]
+	public void merge(RecordNode[] r, RecordNode[] order, int h, int m, int t) {
+		int i = h, j = m + 1, k = h;
+		while (i <= m && j <= t) {	// 将r中两个相邻子序列归并到order中
+			if (r[i].key.compareTo(r[j].key) <= 0) {	// 较小值复制到order中
+				order[k++] = r[i++];
+			} else {
+				order[k++] = r[j++];
+			}
+		}
+		while (i <= m) {	// 将前一个子序列剩余元素复制到order中
+			order[k++] = r[i++];
+		}
+		while (j <= t) {	// 将要一个子序列剩余元素复制到order中
+			order[k++] = r[j++];
+		}
+	}
 
-    //【算法7.14】一趟归并算法
-    //把数组r[n]中每个长度为s的有序表两两归并到数组order[n]中
-    //s 为子序列的长度，n为排序序列的长度
-    public void mergepass(RecordNode[] r, RecordNode[] order, int s, int n) {
-        System.out.print("子序列长度s=" + s + "  ");
-        int p = 0;  //p为每一对待合并表的第一个元素的下标，初值为0
-        while (p + 2 * s - 1 <= n - 1) {  //两两归并长度均为s的有序表
-            merge(r, order, p, p + s - 1, p + 2 * s - 1);
-            p += 2 * s;
-        }
-        if (p + s - 1 < n - 1) {  //归并最后两个长度不等的有序表
-            merge(r, order, p, p + s - 1, n - 1);
-        } else {
-            for (int i = p; i <= n - 1; i++) //将剩余的有序表复制到order中
-            {
-                order[i] = r[i];
-            }
-        }
-    }
+	// ->2.一趟归并排序
+	// ->[算法7.14].一趟归并排序算法
+	// 把数组r[n]中每个长度为s的有序表两两归并到数组order[n]中，s为子序列的长度，n为排序序列的长度
+	public void mergepass(RecordNode[] r, RecordNode[] order, int s, int n) {
+		System.out.print("子序列长度s=" + s + " ");
+		int p = 0;	// p为每一对待合并表的第一个元素的下标，初值为0
+		while (p + 2 * s - 1 <= n - 1) {	// 两两归并长度均为s的有序表
+			merge(r, order, p, p + s - 1, p + 2 * s - 1);
+			p += 2 * s;
+		}
+		if (p + s - 1 < n - 1) {	// 归并最后两个长度不等的有序表
+			merge(r, order, p, p + s - 1, n - 1);
+		} else {
+			for (int i = p; i <= n - 1; i++) {	// 将剩余的有序表复制到order中
+				order[i] = r[i];
+			}
+		}
+	}
 
-    //【算法7.15】2-路归并排序算法
-    public void mergeSort() {
-        System.out.println("归并排序");
-        int s = 1;                      //s为已排序的子序列长度，初值为1
-        int n = this.curlen;
-        RecordNode[] temp = new RecordNode[n];  //定义长度为n的辅助数组temp
-        while (s < n) {
-            mergepass(r, temp, s, n);  //一趟归并，将r数组中各子序列归并到temp中
-            display();
-            s *= 2;                     //子序列长度加倍
-            mergepass(temp, r, s, n);  //将temp数组中各子序列再归并到r中
-            display();
-            s *= 2;
-        }
-    }
+	// ->3.二路归并排序
+	// ->[算法7.15].二路归并排序算法。
+	public void mergeSort() {
+		System.out.println("归并排序");
+		int s = 1;	// s为已排序的子序列长度，初值为1
+		int n = this.curlen;
+		RecordNode[] temp = new RecordNode[n];	// 定义长度为n的辅助数组temp
+		while (s < n) {
+			mergepass(r, temp, s, n);	// 一趟归并，将r数组中各子序列归并到temp中
+			display();
+			s *= 2;	// 子序列长度加倍
+			mergepass(temp, r, s, n);	// 将temp数组中各子序列再归并到r中
+			display();
+			s *= 2;
+		}
+	}
 
+	// 
+	
+	/*
     // 【算法8.1】顺序查找算法
     // 从顺序表r[0]到r[n-1]的n个元素中顺序查找出关键字为key的记录
     // 若查找成功返回其下标，否则返回-1

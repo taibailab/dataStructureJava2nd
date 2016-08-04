@@ -1,13 +1,10 @@
-package ch07.unknown;
+package ch07.sec1;
 
 import java.util.Scanner;
 
-import ch07.sec1.RecordNode;
-import ch07.sec1.SeqList;
-
 /**
- * 
- * 第7章  排序测试
+ * 第7章.内排序<p>
+ * ->第7章.排序测试
  */
 public class SortTest {
 	public static void main(String[] args) throws Exception {
@@ -68,12 +65,12 @@ public class SortTest {
 		System.out.println("6-树形选择排序");
 		/*
         System.out.println("7-堆排序");
-        System.out.println("8-归并排序");
         */
+		System.out.println("8-归并排序");
 		System.out.println("9-带监视哨的直接插入排序");
 		Scanner s = new Scanner(System.in);
 		int xz = s.nextInt();
-//		long startTime = System.currentTimeMillis();
+		long startTime = System.currentTimeMillis();
 		switch (xz) {
 		case 1:
 			L.insertSort();
@@ -93,30 +90,25 @@ public class SortTest {
 		case 6:
 			L.tournamentSort();
 			break;	// 树形选择排序
+			/*
+			case 7:
+                L.heapSort();
+                break;               //堆排序
+			 */
 			
 			
 			
 			
-			
-			
-			
+		case 8:
+			L.mergeSort();
+			break;	// 归并排序
 		case 9:
 			L.insert(0, new RecordNode(0));	// 在0号单元插入一个元素。
 			L.insertSortWithGuard();
 			break;	// 带监视哨的直接插入排序，需要改insert和display
 		}
-		/*
-        switch (xz) {
-            case 7:
-                L.heapSort();
-                break;               //堆排序
-            case 8:
-                L.mergeSort();
-                break;              //归并排序
-        }
-		 */
-//		long endTime = System.currentTimeMillis();
-//		System.out.println(endTime - startTime);
+		long endTime = System.currentTimeMillis();
+		System.out.println(endTime - startTime);
 		System.out.println("排序后：");
 		L.display(xz);
 	}

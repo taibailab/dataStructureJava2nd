@@ -14,7 +14,7 @@ import ch07.sec1.SeqList;
  * 9.2.1.顺序查找<br>
  * 9.2.2.二分查找<br>
  * 9.2.3.分块查找<br>
- * ->[例9.1].二分查找测试程序。
+ * ->[例9.1].二分查找测试程序。<br>
  */
 public class Example9_1 {
 	static SeqList ST = null;

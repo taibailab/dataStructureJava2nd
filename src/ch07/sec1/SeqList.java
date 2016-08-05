@@ -78,15 +78,19 @@ package ch07.sec1;
  * ->1.查找<br>
  * ->2.查找表<br>
  * ->3.平均查找长度ASL(Average Search Length)<br>
+ * <p>
  * 9.2.静态表查找<p>
  * 9.2.1.顺序查找<br>
  * ->[算法9.1].顺序查找算法<br>
  * ->[算法9.2].带监视哨的顺序查找算法<br>
- * 
- * 
- * 
- * 
- * 
+ * 9.2.2.二分查找<br>
+ * ->1.置初值：low=0,high=n-1。<br>
+ * ->2.当low<=high时，重复执行下列步骤：<br>
+ * -->(1).mid=(low+high)/2。<br>
+ * -->(2).若key与r[mid]的关键字值相等，则查找成功，返回mid值；否则转(3)。<br>
+ * -->(3).若key小于r[mid]的关键字值，则high=mid-1；否则low=mid+1。<br>
+ * ->3.当low>high时，查找失败，返回-1。<br>
+ * ->[算法9.3].二分查找算法。<br>
  */
 public class SeqList {
 	public RecordNode[] r;	// 顺序表记录结点数组
@@ -548,38 +552,32 @@ public class SeqList {
 		}
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-	/*
-    //【算法8.3】二分查找算法，
-    //数组元素已按升序排列，若查找成功返回元素下标，否则返回-1
-    public int binarySearch(Comparable key) {
-        if (length() > 0) {
-            int low = 0, high = length() - 1; //查找范围的下界和上界
-            while (low <= high) {
-                int mid = (low + high) / 2;   //中间位置，当前比较元素位置
-                //    System.out.print(r[mid].key + "? ");
-                if (r[mid].key.compareTo(key) == 0) {
-                    return mid;                                //查找成功
-                } else if (r[mid].key.compareTo(key) > 0) { //给定值更小
-                    high = mid - 1;     //查找范围缩小到前半段
-                } else {
-                    low = mid + 1;      //查找范围缩小到后半段
-                }
-            }
-        }
-        return -1;  //查找不成功
-    }
-	 */
+	// 9.2.2.二分查找
+	// ->1.置初值：low=0,high=n-1。
+	// ->2.当low<=high时，重复执行下列步骤：
+	// -->(1).mid=(low+high)/2。
+	// -->(2).若key与r[mid]的关键字值相等，则查找成功，返回mid值；否则转(3)。
+	// -->(3).若key小于r[mid]的关键字值，则high=mid-1；否则low=mid+1。
+	// ->3.当low>high时，查找失败，返回-1。
+	// ->[算法9.3].二分查找算法。
+	// 数组元素已按升序排列，若查找成功返回元素下标，否则返回-1
+	public int binarySearch(Comparable key) {
+		if (length() > 0) {
+			int low = 0, high = length() - 1;	// 查找范围的下界和上界
+			while (low <= high) {
+				int mid = (low + high) / 2;	// 中间位置，当前比较元素位置
+//				System.out.println(r[mid].key + "? ");
+				if (r[mid].key.compareTo(key) == 0) {
+					return mid;	// 查找成功
+				} else if (r[mid].key.compareTo(key) > 0) {	// 给定值更小
+					high = mid - 1;	// 查找范围缩小到前半段
+				} else {
+					low = mid + 1;	// 查找范围缩小到后半段
+				}
+			}
+		}
+		return -1;	// 查找不成功
+	}
 
 }
 

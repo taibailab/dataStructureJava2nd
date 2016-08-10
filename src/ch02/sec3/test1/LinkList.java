@@ -78,7 +78,8 @@ public class LinkList implements IList {
 		if (j > i || p == null) {	// i小于0或者大于表长减1
 			throw new Exception("第" + i + "个元素不存在");	// 输出异常
 		}
-		return p.data;	// 返回元素p
+//		return p.data;	// 返回元素p
+		return p;	// 返回元素p
 	}
 
 	// 在带头结点单链表中第i个数据元素之前插入一个值为x的数据元素
